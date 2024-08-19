@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;All</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionLoad_Session"/>
+    <addaction name="actionSave_Session"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>&amp;Patterns</string>
+    </property>
+    <widget class="QMenu" name="menuSave_CHR">
+     <property name="title">
+      <string>&amp;Save CHR</string>
+     </property>
+     <addaction name="actionLatest"/>
+     <addaction name="separator"/>
+     <addaction name="action1k_from_cursor"/>
+     <addaction name="action1k_from_00"/>
+     <addaction name="action1k_from_40"/>
+     <addaction name="action1k_from_80"/>
+     <addaction name="action1k_from_C0"/>
+     <addaction name="separator"/>
+     <addaction name="action2k_from_cursor"/>
+     <addaction name="action2k_from_00"/>
+     <addaction name="action2k_from_80"/>
+     <addaction name="separator"/>
+     <addaction name="action4K_current_table"/>
+     <addaction name="action8K_both_tables"/>
+     <addaction name="separator"/>
+     <addaction name="action_Selection"/>
+    </widget>
+    <addaction name="actionOpen_CHR"/>
+    <addaction name="menuSave_CHR"/>
+    <addaction name="separator"/>
+    <addaction name="actionFind_Duplicates"/>
+    <addaction name="actionRemove_Duplicates"/>
+    <addaction name="separator"/>
+    <addaction name="actionFind_Unused"/>
+    <addaction name="actionRemove_Unused"/>
+    <addaction name="action8x16_interleave"/>
+    <addaction name="action8x16_deinterleave"/>
+    <addaction name="separator"/>
+    <addaction name="actionSwap_colors"/>
+    <addaction name="actionSwap_banks"/>
+    <addaction name="separator"/>
+    <addaction name="actionClear"/>
+    <addaction name="actionFill_with_numbers"/>
+    <addaction name="actionGenerate_4x4_chunks"/>
+    <addaction name="separator"/>
+    <addaction name="actionSort_by_frequency"/>
+    <addaction name="actionSort_by_density"/>
+   </widget>
+   <widget class="QMenu" name="menuNametable">
+    <property name="title">
+     <string>&amp;Nametable</string>
+    </property>
+    <widget class="QMenu" name="menuSe_lection_to_clipboard">
+     <property name="title">
+      <string>Se&amp;lection to clipboard</string>
+     </property>
+     <addaction name="action_selection_to_asm"/>
+     <addaction name="action_selection_to_c_code"/>
+     <addaction name="action_selection_to_c_rle"/>
+    </widget>
+    <widget class="QMenu" name="menuSelect_ion_as_metasprite_to_clipboard">
+     <property name="title">
+      <string>Select&amp;ion as metasprite to clipboard</string>
+     </property>
+     <addaction name="actionC_code_no_horizontal_flip"/>
+     <addaction name="actionC_c_ode_with_horizontal_flip"/>
+    </widget>
+    <addaction name="action_Set_size"/>
+    <addaction name="separator"/>
+    <addaction name="action_P_en_nametable_or_map"/>
+    <addaction name="separator"/>
+    <addaction name="actionSa_ve_as_binary"/>
+    <addaction name="actionSav_e_as_ASM"/>
+    <addaction name="actionSave_as_C_header"/>
+    <addaction name="action_include_nametable"/>
+    <addaction name="action_i_nclude_attributes"/>
+    <addaction name="action_RLE_compression"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_map"/>
+    <addaction name="separator"/>
+    <addaction name="actionA_dd_the_offset"/>
+    <addaction name="actionRe_place_the_tile"/>
+    <addaction name="separator"/>
+    <addaction name="menuSe_lection_to_clipboard"/>
+    <addaction name="menuSelect_ion_as_metasprite_to_clipboard"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelect_tiles_from_nametable_selection"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelection_to_current_metasprite"/>
+    <addaction name="action_S_kip_tile_zero"/>
+    <addaction name="action_auto_increment"/>
+    <addaction name="action_mer_ge_to_existing_data"/>
+   </widget>
+   <widget class="QMenu" name="menuMetasprites">
+    <property name="title">
+     <string>&amp;Metasprites</string>
+    </property>
+    <addaction name="action_Open_bank"/>
+    <addaction name="action_Save_bank"/>
+    <addaction name="separator"/>
+    <addaction name="action_Manage"/>
+    <addaction name="separator"/>
+    <addaction name="actionA_dd_tile_offset"/>
+    <addaction name="actionAdd_X_Y_offset"/>
+    <addaction name="separator"/>
+    <addaction name="action_Put_single_to_clipboard_as_AS_M"/>
+    <addaction name="actionPut_single_to_clipboard_as_C"/>
+    <addaction name="action_Put_bank_to_clipboard_as_ASM"/>
+    <addaction name="action_Put_bank_to_clipboard_as_ASM_2"/>
+   </widget>
+   <widget class="QMenu" name="menuPalettes">
+    <property name="title">
+     <string>Pale&amp;ttes</string>
+    </property>
+    <widget class="QMenu" name="menu_Reset">
+     <property name="title">
+      <string>&amp;Reset</string>
+     </property>
+     <addaction name="action_Pal_Grayscale"/>
+     <addaction name="action_Pal_A"/>
+     <addaction name="action_Pal_B"/>
+     <addaction name="action_Pal_C"/>
+     <addaction name="action_Pal_D"/>
+    </widget>
+    <widget class="QMenu" name="menuP_ut_to_clipboard">
+     <property name="title">
+      <string>P&amp;ut to clipboard</string>
+     </property>
+     <addaction name="action_6502_assembly_code"/>
+     <addaction name="action_ASM_data"/>
+     <addaction name="action_C_code"/>
+    </widget>
+    <addaction name="action_Open"/>
+    <addaction name="action_Save"/>
+    <addaction name="menu_Reset"/>
+    <addaction name="separator"/>
+    <addaction name="action_Copy"/>
+    <addaction name="action_Paste"/>
+    <addaction name="separator"/>
+    <addaction name="menuP_ut_to_clipboard"/>
+   </widget>
+   <widget class="QMenu" name="menuImport">
+    <property name="title">
+     <string>&amp;Import</string>
+    </property>
+    <addaction name="action_BMP_as_nametable"/>
+    <addaction name="action_b_est_offsets"/>
+    <addaction name="action_lossy_import_slow"/>
+    <addaction name="action_threshold"/>
+    <addaction name="action_without_color_data"/>
+    <addaction name="separator"/>
+    <addaction name="actionB_MP_as_nametable_match_tiles"/>
+    <addaction name="actionBM_P_as_nametable_into_a_number_of_tiles"/>
+    <addaction name="separator"/>
+    <addaction name="actionBMP_as_tileset"/>
+    <addaction name="separator"/>
+    <addaction name="action_NES_file"/>
+   </widget>
+   <widget class="QMenu" name="menuExport">
+    <property name="title">
+     <string>&amp;Export</string>
+    </property>
+    <addaction name="action_Nametable_as_BMP"/>
+    <addaction name="action_Tileset_as_BMP"/>
+    <addaction name="action_Palette_as_BMP"/>
+    <addaction name="separator"/>
+    <addaction name="actionP_ut_CHR_into_NES_file"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="action_2x"/>
+    <addaction name="action_3x"/>
+    <addaction name="action_4x"/>
+   </widget>
+   <widget class="QMenu" name="menuCHR_Editor">
+    <property name="title">
+     <string>&amp;CHR Editor</string>
+    </property>
+    <addaction name="actionViewCHREditor"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuNametable"/>
+   <addaction name="menuMetasprites"/>
+   <addaction name="menuPalettes"/>
+   <addaction name="menuImport"/>
+   <addaction name="menuExport"/>
+   <addaction name="menuView"/>
+   <addaction name="menuCHR_Editor"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="actionSave_Session">
+   <property name="text">
+    <string>S&amp;ave Session</string>
+   </property>
+  </action>
+  <action name="actionLoad_Session">
+   <property name="text">
+    <string>&amp;Load session</string>
+   </property>
+  </action>
+  <action name="actionOpen_CHR">
+   <property name="text">
+    <string>&amp;Open CHR</string>
+   </property>
+  </action>
+  <action name="actionFind_Duplicates">
+   <property name="text">
+    <string>&amp;Find duplicates</string>
+   </property>
+  </action>
+  <action name="actionRemove_Duplicates">
+   <property name="text">
+    <string>&amp;Remove duplicates</string>
+   </property>
+  </action>
+  <action name="actionFind_Unused">
+   <property name="text">
+    <string>F&amp;ind unused</string>
+   </property>
+  </action>
+  <action name="actionRemove_Unused">
+   <property name="text">
+    <string>R&amp;emove unused</string>
+   </property>
+  </action>
+  <action name="action8x16_interleave">
+   <property name="text">
+    <string>&amp;8x16 interleave</string>
+   </property>
+  </action>
+  <action name="action8x16_deinterleave">
+   <property name="text">
+    <string>8&amp;x16 deinterleave</string>
+   </property>
+  </action>
+  <action name="actionSwap_colors">
+   <property name="text">
+    <string>S&amp;wap colors</string>
+   </property>
+  </action>
+  <action name="actionSwap_banks">
+   <property name="text">
+    <string>Sw&amp;ap banks</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>&amp;Clear</string>
+   </property>
+  </action>
+  <action name="actionFill_with_numbers">
+   <property name="text">
+    <string>Fi&amp;ll with numbers</string>
+   </property>
+  </action>
+  <action name="actionGenerate_4x4_chunks">
+   <property name="text">
+    <string>&amp;Generate 4x4 chunks</string>
+   </property>
+  </action>
+  <action name="actionSort_by_frequency">
+   <property name="text">
+    <string>Sor&amp;t by frequency</string>
+   </property>
+  </action>
+  <action name="actionSort_by_density">
+   <property name="text">
+    <string>Sort &amp;by density</string>
+   </property>
+  </action>
+  <action name="actionLatest">
+   <property name="text">
+    <string>&amp;Latest (8K from tile $00)</string>
+   </property>
+  </action>
+  <action name="action1k_from_cursor">
+   <property name="text">
+    <string>&amp;1K from cursor</string>
+   </property>
+  </action>
+  <action name="action1k_from_00">
+   <property name="text">
+    <string>1&amp;K from $00</string>
+   </property>
+  </action>
+  <action name="action1k_from_40">
+   <property name="text">
+    <string>1K &amp;from $40</string>
+   </property>
+  </action>
+  <action name="action1k_from_80">
+   <property name="text">
+    <string>1K f&amp;rom $80</string>
+   </property>
+  </action>
+  <action name="action1k_from_C0">
+   <property name="text">
+    <string>1K fr&amp;om $C0</string>
+   </property>
+  </action>
+  <action name="action2k_from_cursor">
+   <property name="text">
+    <string>&amp;2K from cursor</string>
+   </property>
+  </action>
+  <action name="action2k_from_80">
+   <property name="text">
+    <string>2K from $&amp;80</string>
+   </property>
+  </action>
+  <action name="action2k_from_00">
+   <property name="text">
+    <string>2K fro&amp;m $00</string>
+   </property>
+  </action>
+  <action name="action4K_current_table">
+   <property name="text">
+    <string>&amp;4K (current table)</string>
+   </property>
+  </action>
+  <action name="action8K_both_tables">
+   <property name="text">
+    <string>8K (&amp;both tables)</string>
+   </property>
+  </action>
+  <action name="action_Selection">
+   <property name="text">
+    <string>&amp;Selection</string>
+   </property>
+  </action>
+  <action name="action_Set_size">
+   <property name="text">
+    <string>&amp;Set size</string>
+   </property>
+  </action>
+  <action name="action_P_en_nametable_or_map">
+   <property name="text">
+    <string>&amp;Open nametable or  map</string>
+   </property>
+  </action>
+  <action name="actionSa_ve_as_binary">
+   <property name="text">
+    <string>Sa&amp;ve as binary</string>
+   </property>
+  </action>
+  <action name="actionSav_e_as_ASM">
+   <property name="text">
+    <string>Sav&amp;e as ASM</string>
+   </property>
+  </action>
+  <action name="actionSave_as_C_header">
+   <property name="text">
+    <string>Save as &amp;C header</string>
+   </property>
+  </action>
+  <action name="action_include_nametable">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>+ &amp;include nametable</string>
+   </property>
+   <property name="toolTip">
+    <string>include nametable</string>
+   </property>
+  </action>
+  <action name="action_i_nclude_attributes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>+ i&amp;nclude attributes</string>
+   </property>
+   <property name="toolTip">
+    <string>include attributes</string>
+   </property>
+  </action>
+  <action name="action_RLE_compression">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>+ &amp;RLE compression</string>
+   </property>
+   <property name="toolTip">
+    <string>RLE compression</string>
+   </property>
+  </action>
+  <action name="actionSave_map">
+   <property name="text">
+    <string>Save &amp;map</string>
+   </property>
+  </action>
+  <action name="actionA_dd_the_offset">
+   <property name="text">
+    <string>A&amp;dd the offset</string>
+   </property>
+  </action>
+  <action name="actionRe_place_the_tile">
+   <property name="text">
+    <string>Re&amp;place the tile</string>
+   </property>
+  </action>
+  <action name="actionSelect_tiles_from_nametable_selection">
+   <property name="text">
+    <string>Select tiles from nametable selection</string>
+   </property>
+  </action>
+  <action name="actionSelection_to_current_metasprite">
+   <property name="text">
+    <string>Selection to current metasprite</string>
+   </property>
+   <property name="toolTip">
+    <string>Selection to current metasprite </string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="action_S_kip_tile_zero">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>+ s&amp;kip tile zero</string>
+   </property>
+   <property name="toolTip">
+    <string>skip tile zero</string>
+   </property>
+  </action>
+  <action name="action_auto_increment">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>+ &amp;auto increment</string>
+   </property>
+   <property name="toolTip">
+    <string>auto increment</string>
+   </property>
+  </action>
+  <action name="action_mer_ge_to_existing_data">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>+ mer&amp;ge to existing data</string>
+   </property>
+   <property name="toolTip">
+    <string>merge to existing data</string>
+   </property>
+  </action>
+  <action name="action_selection_to_asm">
+   <property name="text">
+    <string>&amp;ASM code</string>
+   </property>
+  </action>
+  <action name="action_selection_to_c_code">
+   <property name="text">
+    <string>&amp;C code</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+C</string>
+   </property>
+  </action>
+  <action name="action_selection_to_c_rle">
+   <property name="text">
+    <string>C c&amp;ode with RLE</string>
+   </property>
+  </action>
+  <action name="actionC_code_no_horizontal_flip">
+   <property name="text">
+    <string>&amp;C code, no horizontal flip</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+M</string>
+   </property>
+  </action>
+  <action name="actionC_c_ode_with_horizontal_flip">
+   <property name="text">
+    <string>C c&amp;ode, with horizontal flip</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+N</string>
+   </property>
+  </action>
+  <action name="action_Open_bank">
+   <property name="text">
+    <string>&amp;Open bank
+</string>
+   </property>
+  </action>
+  <action name="action_Save_bank">
+   <property name="text">
+    <string>&amp;Save bank
+</string>
+   </property>
+  </action>
+  <action name="action_Manage">
+   <property name="text">
+    <string>&amp;Manage
+</string>
+   </property>
+  </action>
+  <action name="actionA_dd_tile_offset">
+   <property name="text">
+    <string>A&amp;dd tile offset</string>
+   </property>
+  </action>
+  <action name="actionAdd_X_Y_offset">
+   <property name="text">
+    <string>Add &amp;X/Y offset</string>
+   </property>
+  </action>
+  <action name="action_Put_single_to_clipboard_as_AS_M">
+   <property name="text">
+    <string>Put single to clipboard as AS&amp;M</string>
+   </property>
+  </action>
+  <action name="actionPut_single_to_clipboard_as_C">
+   <property name="text">
+    <string>Put single to clipboard as &amp;C</string>
+   </property>
+  </action>
+  <action name="action_Put_bank_to_clipboard_as_ASM">
+   <property name="text">
+    <string>&amp;Put bank to clipboard as ASM
+</string>
+   </property>
+  </action>
+  <action name="action_Put_bank_to_clipboard_as_ASM_2">
+   <property name="text">
+    <string>&amp;Put bank to clipboard as ASM
+</string>
+   </property>
+  </action>
+  <action name="action_Open">
+   <property name="text">
+    <string>&amp;Open
+</string>
+   </property>
+  </action>
+  <action name="action_Save">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="action_Copy">
+   <property name="text">
+    <string>&amp;Copy</string>
+   </property>
+  </action>
+  <action name="action_Paste">
+   <property name="text">
+    <string>&amp;Paste</string>
+   </property>
+  </action>
+  <action name="action_Pal_Grayscale">
+   <property name="text">
+    <string>&amp;Grayscale</string>
+   </property>
+  </action>
+  <action name="action_Pal_A">
+   <property name="text">
+    <string>Default &amp;A</string>
+   </property>
+  </action>
+  <action name="action_Pal_B">
+   <property name="text">
+    <string>Default &amp;B</string>
+   </property>
+  </action>
+  <action name="action_Pal_C">
+   <property name="text">
+    <string>Default &amp;C</string>
+   </property>
+  </action>
+  <action name="action_Pal_D">
+   <property name="text">
+    <string>Default &amp;D</string>
+   </property>
+  </action>
+  <action name="action_6502_assembly_code">
+   <property name="text">
+    <string>&amp;6502 assembly code</string>
+   </property>
+  </action>
+  <action name="action_C_code">
+   <property name="text">
+    <string>&amp;C code</string>
+   </property>
+  </action>
+  <action name="action_ASM_data">
+   <property name="text">
+    <string>&amp;ASM data</string>
+   </property>
+  </action>
+  <action name="action_BMP_as_nametable">
+   <property name="text">
+    <string>&amp;BMP as nametable</string>
+   </property>
+  </action>
+  <action name="action_b_est_offsets">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>+ b&amp;est offsets</string>
+   </property>
+  </action>
+  <action name="action_lossy_import_slow">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>+ &amp;lossy import (slow!)</string>
+   </property>
+  </action>
+  <action name="action_threshold">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>+ &amp;threshold</string>
+   </property>
+  </action>
+  <action name="action_without_color_data">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>+ &amp;without color data</string>
+   </property>
+  </action>
+  <action name="actionB_MP_as_nametable_match_tiles">
+   <property name="text">
+    <string>B&amp;MP as nametable match tiles</string>
+   </property>
+  </action>
+  <action name="actionBM_P_as_nametable_into_a_number_of_tiles">
+   <property name="text">
+    <string>BM&amp;P as nametable into a number of tiles</string>
+   </property>
+  </action>
+  <action name="actionBMP_as_tileset">
+   <property name="text">
+    <string>BMP &amp;as tileset</string>
+   </property>
+  </action>
+  <action name="action_NES_file">
+   <property name="text">
+    <string>&amp;NES file</string>
+   </property>
+  </action>
+  <action name="action_Nametable_as_BMP">
+   <property name="text">
+    <string>&amp;Nametable as BMP</string>
+   </property>
+  </action>
+  <action name="action_Tileset_as_BMP">
+   <property name="text">
+    <string>&amp;Tileset as BMP</string>
+   </property>
+  </action>
+  <action name="action_Palette_as_BMP">
+   <property name="text">
+    <string>&amp;Palette as BMP</string>
+   </property>
+  </action>
+  <action name="actionP_ut_CHR_into_NES_file">
+   <property name="text">
+    <string>P&amp;ut CHR into NES file</string>
+   </property>
+  </action>
+  <action name="action_2x">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;2x</string>
+   </property>
+  </action>
+  <action name="action_3x">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;3x</string>
+   </property>
+  </action>
+  <action name="action_4x">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;4x</string>
+   </property>
+  </action>
+  <action name="actionViewCHREditor">
+   <property name="text">
+    <string>&amp;View</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
