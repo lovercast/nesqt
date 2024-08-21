@@ -49,7 +49,6 @@ else()
             ${PROJECT_SOURCES}
             nametableview.h nametableview.cpp
             chreditorwidget.h chreditorwidget.cpp
-            chreditorwidget.ui
             chreditview.h chreditview.cpp
             NesQt.h
             chr.h chr.cpp
