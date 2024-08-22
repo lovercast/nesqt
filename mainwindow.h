@@ -60,6 +60,7 @@ private slots:
     void slot_selection_to_c_code();
     void slot_selection_to_c_rle();
     void slot_selection_to_asm();
+    void slot_open();
     void slot_warn();
 
 private:

@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include <format>
 #include <QLabel>
 #include <QClipboard>
+#include <QFileDialog>
 #include "chr.h"
 #include "palview.h"
 #include "chrrenderer.h"
@@ -88,6 +90,7 @@ void MainWindow::init_menu_actions()
     connect(ui->action_selection_to_c_code, SIGNAL (triggered()), this, SLOT (slot_selection_to_c_code()));
     connect(ui->action_selection_to_c_rle, SIGNAL (triggered()), this, SLOT (slot_selection_to_c_rle()));
     connect(ui->action_selection_to_asm, SIGNAL(triggered()), this, SLOT(slot_selection_to_asm()));
+    connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(slot_open()));
 }
 
 void MainWindow::init_tileset_menu()
@@ -432,6 +435,53 @@ void MainWindow::slot_selection_to_asm()
     QString s = nametable_renderer->as_6502_asm(true);
     QClipboard *clipboard = QGuiApplication::clipboard();
     clipboard->setText(s);
+}
+
+void MainWindow::slot_open()
+{
+    QString filter(tr("All supported files (*.chr *.bin *.nam *map *.rle *.pal)"));
+
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), QString(), filter);
+
+    // Check what type of file and validate
+    QString ext;
+    auto q = nullptr;
+    for (auto c : fileName) {
+        if (c == '.') {
+            ext.clear();
+        }
+        ext.push_back(c);
+    }
+    if (ext.isEmpty() || !ext.startsWith('.')) {
+        QMessageBox::information(this, tr("Unable to open file"),
+                                 tr("Invalid filename"));
+        return;
+    }
+
+    QFile file(fileName);
+
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::information(this, tr("Unable to open file"),
+                                 file.errorString());
+        return;
+    }
+
+    if (ext == ".chr") {
+        NESQT::not_implemented();
+    } else if (ext == ".bin") {
+        NESQT::not_implemented();
+    } else if (ext == ".nam") {
+        NESQT::not_implemented();
+    } else if (ext == ".map") {
+        NESQT::not_implemented();
+    } else if (ext == ".rle") {
+        NESQT::not_implemented();
+    } else if (ext == ".pal") {
+        NESQT::not_implemented();
+    } else {
+        QMessageBox::information(this, tr("Unable to open file"),
+                                 tr(std::format("Invalid file extension: {}", ext.toStdString()).c_str()));
+    }
 }
 
 void MainWindow::slot_warn()
