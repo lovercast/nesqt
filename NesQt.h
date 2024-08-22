@@ -27,6 +27,8 @@ enum UndoTypes {
 
 void warn(QString msg);
 
+[[noreturn]] void not_implemented();
+
 } // namespace NESQT
 
 #endif // NESQT_H
