@@ -4,12 +4,12 @@
 <context>
     <name>CHR</name>
     <message>
-        <location filename="chr.cpp" line="22"/>
+        <location filename="chr.cpp" line="24"/>
         <source>Failed to open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="chr.cpp" line="26"/>
+        <location filename="chr.cpp" line="31"/>
         <source>Failed to read 8K from CHR file</source>
         <translation type="unfinished"></translation>
     </message>

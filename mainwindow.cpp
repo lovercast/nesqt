@@ -467,7 +467,7 @@ void MainWindow::slot_open()
     }
 
     if (ext == ".chr") {
-        NESQT::not_implemented();
+        chr->load_from_file(fileName);
     } else if (ext == ".bin") {
         NESQT::not_implemented();
     } else if (ext == ".nam") {

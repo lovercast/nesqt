@@ -25,7 +25,7 @@ public:
     void scroll_down(void);
     void mirror(bool horizontal=true);
     void rotate(bool clockwise=true);
-    void load_from_file(const char *filename);
+    void load_from_file(QString filename);
 //    QPixmap &&to_pixmap(PAL &pal);
     const auto &map() const { return data; }
     /*

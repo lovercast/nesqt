@@ -1,6 +1,8 @@
 #include "chr.h"
 #include "NesQt.h"
 
+#include <QFile>
+
 
 CHR::CHR()
     : tileActive{0}
@@ -14,20 +16,21 @@ CHR::CHR()
     }
 }
 
-void CHR::load_from_file(const char *filename)
+void CHR::load_from_file(QString filename)
 {
     DataT buf[8192]; /* TODO: magic number */
-    FILE *f = fopen(filename, "r");
-    if (!f) {
+    QFile f(filename);
+    if (!f.open(QIODevice::ReadOnly)) {
         NESQT::warn(tr("Failed to open file"));
         return;
     }
-    if (fread(buf, sizeof(uchar), sizeof(buf), f) < sizeof(buf)) {
+
+    QDataStream ds(&f);
+
+    if (ds.readRawData((char *) buf, sizeof(buf)) < sizeof(buf)) {
         NESQT::warn(tr("Failed to read 8K from CHR file"));
-        fclose(f);
         return;
     }
-    fclose(f);
     DataT tile[64];
     for (IndexT ty = 0; ty < 16; ++ty) {
         for (IndexT tx = 0; tx < 16; ++tx) {

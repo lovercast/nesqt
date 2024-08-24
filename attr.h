@@ -15,6 +15,9 @@ public:
     explicit ATTR(QObject *parent = nullptr);
     DataT get(IndexT x, IndexT y) const;
     void set(IndexT x, IndexT y, IndexT val);
+    std::vector<DataT> save_to_file();
+    void load_from_file(DataT buf[]);
+
 signals:
     void changed();
     void changed_idx(int);
