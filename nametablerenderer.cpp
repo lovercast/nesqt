@@ -1,4 +1,6 @@
 #include <QPainter>
+#include <QFile>
+#include "NesQt.h"
 #include "nametablerenderer.h"
 #include "nametableundo.h"
 #include "rle.h"
@@ -700,4 +702,25 @@ QString NametableRenderer::as_c_code(bool selection, bool rle)
     }
     s += "};";
     return s;
+}
+
+void NametableRenderer::load_from_file(QString filename)
+{
+    unsigned char buf[1024]; /* TODO: magic number */
+    QFile f(filename);
+    if (!f.open(QIODevice::ReadOnly)) {
+        NESQT::warn(tr("Failed to open file"));
+        return;
+    }
+
+    QDataStream ds(&f);
+
+    if (ds.readRawData((char *) buf, sizeof(buf)) < sizeof(buf)) {
+        NESQT::warn(tr("Failed to read 1K from Nametable file"));
+        return;
+    }
+
+    nametable.load_from_file(buf, 960);
+
+    attr.load_from_file(buf + 960);
 }

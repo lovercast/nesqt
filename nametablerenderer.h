@@ -46,6 +46,7 @@ public:
     void set_tool(ToolType type);
     QString as_c_code(bool selection, bool rle);
     QString as_6502_asm(bool selection);
+    void load_from_file(QString filename);
 
 signals:
     void changed();

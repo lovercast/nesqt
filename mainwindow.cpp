@@ -471,7 +471,7 @@ void MainWindow::slot_open()
     } else if (ext == ".bin") {
         NESQT::not_implemented();
     } else if (ext == ".nam") {
-        NESQT::not_implemented();
+        nametable_renderer->load_from_file(fileName);
     } else if (ext == ".map") {
         NESQT::not_implemented();
     } else if (ext == ".rle") {

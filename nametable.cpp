@@ -35,3 +35,11 @@ void Nametable::fill(QVector<std::pair<size_t,size_t>> tiles, uchar tileno)
     emit changed();
 }
 
+void Nametable::load_from_file(DataT *buf, size_t sz)
+{
+    data.clear();
+    for (int i = 0; i < sz; ++i) {
+        data.push_back(buf[i]);
+    }
+    emit changed();
+}

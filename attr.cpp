@@ -40,7 +40,7 @@ void ATTR::load_from_file(DataT buf[]) {
     auto p = data.begin();
     for (int y = 0; y < h; y += 2) {
         for (int x = 0; x < w; x += 2) {
-            auto val = *p;
+            auto val = *p++;
             data[y * w + x] = val & 0x3;
             data[y * w + x + 1] = (val >> 2) & 0x3;
             data[(y + 1) * w + x] = (val >> 4) & 0x3;

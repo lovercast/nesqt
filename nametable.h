@@ -21,6 +21,7 @@ public:
     IndexT width() const;
     IndexT height() const;
     void fill(QVector<std::pair<size_t,size_t>>, uchar val);
+    void load_from_file(DataT *buf, size_t sz);
 
 signals:
     void changed();
